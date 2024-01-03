@@ -51,8 +51,15 @@ public class MovieRepository {
     }
 
     public void deleteDirectorByName(String directorName) {
+        List<String> list = directorMovieMap.get(directorName);
+        for(String movie : movieMap.keySet()){
+            if(list.contains(movie)){
+                movieMap.remove(movie);
+            }
+        }
         directorMap.remove(directorName);
         directorMovieMap.remove(directorName);
+
     }
 
     public void deleteAllDirectors() {
