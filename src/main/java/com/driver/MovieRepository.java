@@ -68,7 +68,7 @@ public class MovieRepository {
             deleteDirectorByName(directorName);
         }
 
-        directorMap.clear();
-        directorMovieMap.clear();
+//        directorMap.clear();
+//        directorMovieMap.clear();
     }
 }
