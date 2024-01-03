@@ -63,6 +63,7 @@ public class MovieRepository {
     }
 
     public void deleteAllDirectors() {
+        movieMap.clear();
         directorMap.clear();
         directorMovieMap.clear();
     }
