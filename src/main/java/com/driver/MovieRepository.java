@@ -63,7 +63,11 @@ public class MovieRepository {
     }
 
     public void deleteAllDirectors() {
-        movieMap.clear();
+
+        for(String directorName : directorMap.keySet()){
+            deleteDirectorByName(directorName);
+        }
+
         directorMap.clear();
         directorMovieMap.clear();
     }
