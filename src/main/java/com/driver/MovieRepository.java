@@ -51,14 +51,24 @@ public class MovieRepository {
     }
 
     public void deleteDirectorByName(String directorName) {
-        List<String> list = directorMovieMap.get(directorName);
-        for(String movie : movieMap.keySet()){
-            if(list.contains(movie)){
-                movieMap.remove(movie);
+//        List<String> list = directorMovieMap.get(directorName);
+//        for(String movie : movieMap.keySet()){
+//            if(list.contains(movie)){
+//                movieMap.remove(movie);
+//            }
+//        }
+//        directorMap.remove(directorName);
+//        directorMovieMap.remove(directorName);
+
+        if(directorMovieMap.containsKey(directorName)){
+            List<String> moviesByDirector=directorMovieMap.get(directorName);
+            for(String movieName: moviesByDirector){
+                deleteByMovieName(movieName);
             }
+            directorMovieMap.remove(directorName);
         }
-        directorMap.remove(directorName);
-        directorMovieMap.remove(directorName);
+        if(directorMap.containsKey(directorName))
+            directorMap.remove(directorName);
 
     }
 
@@ -67,8 +77,27 @@ public class MovieRepository {
 //        for(String directorName : directorMap.keySet()){
 //            deleteDirectorByName(directorName);
 //        }
+        List<String> directors = new ArrayList<>();
+        for(String directorName : directorMap.keySet()){
+            directors.add(directorName);
+        }
+
+        for(String directorName : directors){
+            if(directorMovieMap.containsKey(directorName)){
+                List<String> movies = directorMovieMap.get(directorName);
+                for(String movieNames : movies){
+                    deleteByMovieName(movieNames);
+                }
+            }
+        }
 
         directorMap.clear();
         directorMovieMap.clear();
+    }
+
+    public void deleteByMovieName(String movieName) {
+        if(movieMap.containsKey(movieName)){
+            movieMap.remove(movieName);
+        }
     }
 }
