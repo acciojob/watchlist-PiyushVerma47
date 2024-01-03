@@ -64,11 +64,11 @@ public class MovieRepository {
 
     public void deleteAllDirectors() {
 
-        for(String directorName : directorMap.keySet()){
-            deleteDirectorByName(directorName);
-        }
+//        for(String directorName : directorMap.keySet()){
+//            deleteDirectorByName(directorName);
+//        }
 
-//        directorMap.clear();
-//        directorMovieMap.clear();
+        directorMap.clear();
+        directorMovieMap.clear();
     }
 }
